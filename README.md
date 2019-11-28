@@ -283,4 +283,91 @@ POST http://localhost:9000/v1/vagas
 
 ----------------
 
+## POST pessoas
+
+```
+POST http://localhost:9000/v1/pessoas
+```
+
+
+
+----------------
+
+### Request
+
+> 
+> **Header**
+> 
+> |Key|Value|Description|
+> |---|---|---|
+> |Content-Type|application/json||
+> 
+> **Body**
+> 
+> ```
+> {
+> 	"nome": "John Doe",
+>     "profissao": "Engenheiro de Software",
+>     "localizacao": "B",
+>     "nivel": 3
+> }
+> ```
+> 
+
+### Examples:
+
+> 
+> **Example: POST pessoas**
+> 
+> > 
+> > ```
+> > POST http://localhost:9000/v1/pessoas
+> > ```
+> > 
+> > **Request**
+> > 
+> > > 
+> > > **Header**
+> > > 
+> > > |Key|Value|Description|
+> > > |---|---|---|
+> > > |Content-Type|application/json||
+> > > 
+> > > **Body**
+> > > 
+> > > ```
+> > > {
+> > > 	"nome": "John Doe",
+> > >     "profissao": "Engenheiro de Software",
+> > >     "localizacao": "B",
+> > >     "nivel": 3
+> > > }
+> > > ```
+> > > 
+> > 
+> > ----------------
+> > 
+> > **Response**
+> > 
+> > > 
+> > > **Body**
+> > > 
+> > > ```
+> > > {
+> > >   "message": "Candidato inserido com sucesso! ", 
+> > >   "data": {
+> > >     "name": "John Doe", 
+> > >     "level": "3", 
+> > >     "career": "Engenheiro de Software", 
+> > >     "created_at": "2019-11-28T06:22:07.671Z", 
+> > >     "__v": 0, 
+> > >     "location": "B", 
+> > >     "_id": "5ddf678f519c1a13fb5f614c"
+> > >   }
+> > > }
+> > > ```
+> > > 
+> > 
+> 
+
 ----------------
