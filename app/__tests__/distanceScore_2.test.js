@@ -1,10 +1,19 @@
 const CandidateScore = require("../services/CandidateScore");
+const Graph = require("../services/Graph");
 const job_mock = require("../mock/job_mock");
 const candidate_mock = require("../mock/candidate_mock");
+const nodes = require("../services/Nodes");
 const score = new CandidateScore(candidate_mock._2, job_mock._2);
+const map = new Graph();
+nodes.nodesName.forEach(element => {
+  map.addNode(element);
+});
+nodes.graphNodes.forEach((elem, i) => {
+  map.addEdge(elem[0], elem[1], elem[2]);
+});
 
 test("Teste para validar pontuacao baseado em distancia", () => {
-  const dijkstra = score.findPathWithDijkstra(
+  const dijkstra = map.findPathWithDijkstra(
     candidate_mock._2.location,
     job_mock._2.location
   );

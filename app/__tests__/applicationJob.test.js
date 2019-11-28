@@ -1,6 +1,6 @@
 const frisby = require("frisby");
 const Joi = frisby.Joi;
-
+const HOSTNAME = process.env.HOSTNAME || "localhost";
 const bodyVaga = {
   empresa: "Xpto enterprise",
   titulo: "Vaga teste",
@@ -18,10 +18,10 @@ const bodyPerson = {
 let job,
   person = {};
 
-describe("Posts", function() {
+describe("Teste de integracao entre endpoints", function() {
   it("POST Cria a vaga", async function() {
     job = await frisby
-      .post("http://localhost:9000/v1/vagas", bodyVaga)
+      .post(`http://${HOSTNAME}:9000/v1/vagas`, bodyVaga)
       .expect("status", 201)
       .expect(
         "jsonTypes",
@@ -36,11 +36,11 @@ describe("Posts", function() {
           __v: 0
         }).options({ convert: true })
       );
-    // return job;
+    return job;
   });
   it("POST Cria a pessoa", async function() {
     person = await frisby
-      .post("http://localhost:9000/v1/pessoas", bodyPerson)
+      .post(`http://${HOSTNAME}:9000/v1/pessoas`, bodyPerson)
       .expect("status", 201)
       .expect(
         "jsonTypes",
@@ -54,13 +54,13 @@ describe("Posts", function() {
           __v: 0
         }).options({ convert: true })
       );
-    // return person;
+    return person;
   });
   it("POST Cria a candidatura", async function() {
-      job = job._json.data
-      person = person._json.data
+    job = job._json.data;
+    person = person._json.data;
     return await frisby
-      .post("http://localhost:9000/v1/candidaturas", {
+      .post(`http://${HOSTNAME}:9000/v1/candidaturas`, {
         id_vaga: job._id,
         id_pessoa: person._id
       })

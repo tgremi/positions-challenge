@@ -5,7 +5,6 @@ nodes.nodesName.forEach(element => {
   map.addNode(element);
 });
 nodes.graphNodes.forEach((elem, i) => {
-  //   console.log("No pai: ", elem[0], "No destino: ", elem[1], "Valor: ", elem[2]);
   map.addEdge(elem[0], elem[1], elem[2]);
 });
 

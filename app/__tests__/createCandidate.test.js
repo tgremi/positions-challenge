@@ -1,6 +1,8 @@
 const frisby = require("frisby");
 const Joi = frisby.Joi;
 
+const HOSTNAME = process.env.HOSTNAME || "localhost";
+
 const body = {
   nome: "Joao Silva",
   profissao: "Engenheiro de Software",
@@ -10,7 +12,7 @@ const body = {
 
 it("POST Cria o candidato", function() {
   return frisby
-    .post("http://localhost:9000/v1/pessoas", body)
+    .post(`http://${HOSTNAME}:9000/v1/pessoas`, body)
     .expect("status", 201)
     .expect(
       "jsonTypes",

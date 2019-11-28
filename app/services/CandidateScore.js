@@ -1,15 +1,15 @@
 const Graph = require("./Graph");
 const nodes = require("./Nodes");
 
-class CandidateScore extends Graph {
+class CandidateScore {
   constructor(candidate, job) {
-    super();
+    this.map = new Graph();
     nodes.nodesName.forEach(element => {
-      this.addNode(element);
+      this.map.addNode(element);
     });
 
     nodes.graphNodes.forEach((elem, i) => {
-      this.addEdge(elem[0], elem[1], elem[2]);
+      this.map.addEdge(elem[0], elem[1], elem[2]);
     });
 
     this.candidate = candidate;
@@ -38,7 +38,7 @@ class CandidateScore extends Graph {
 
   score() {
     const expScore = this.experienceScore(this.candidate.level, this.job.level);
-    const lowestDistance = this.findPathWithDijkstra(
+    const lowestDistance = this.map.findPathWithDijkstra(
       this.job.location,
       this.candidate.location
     ).cost;
