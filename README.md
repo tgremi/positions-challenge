@@ -1,10 +1,40 @@
-# testJob
+## Sobre
+ Esse teste tem como objetivo utilizar algoritmos para realizar a busca de menor custo a partir de um grafo. Para poder analisar melhores candidatos a determinadas vagas.
+
+ ![](./graph.png)
+
+
+## Instalando
+
+----------------
+Para iniciar o projeto basta utilizar os comandos abaixo: 
+
+- ```docker-compose build```
+- `docker-compose up`
+
+----------------
+## Testes
+
+----------------
+Por estar utilizando Docker, utilize o comando abaixo para rodar os testes automatizados: 
+
+- ```docker-compose exec api npm test```
+
+----------------
+
+
+## Variáveis de ambiente 
+
+----------------
+
+- HOSTNAME - utilizada para configurar o hostname da aplicação
+- PORT - utilizada para configurar a porta para a aplicação
+- URI_MONGO - string de conexão para o banco de dados MongoDB
 
 ----------------
 
 
 
-----------------
 
 ## GET ranking
 
@@ -254,9 +284,3 @@ POST http://localhost:9000/v1/vagas
 ----------------
 
 ----------------
-
-Built with [Postdown][PyPI].
-
-Author: [Titor](https://github.com/TitorX)
-
-[PyPI]:    https://pypi.python.org/pypi/Postdown

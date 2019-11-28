@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const getConnection = () => {
-	console.log('createConnection on DB');
-	mongoose.connect('mongodb://mongo:27017/jobTest', { useNewUrlParser: true });
-	const db = mongoose.connection;
-	db.on('error', console.error.bind(console, 'connection error:'));
+  const URI = process.env.URI_MONGO || "localhost";
+  console.log("createConnection on DB", `mongodb://${URI}:27017/jobTest`);
+  mongoose.connect(`mongodb://${URI}:27017/jobTest`, { useNewUrlParser: true });
+  const db = mongoose.connection;
+  db.on("error", console.error.bind(console, "connection error:"));
 };
 module.exports = getConnection();

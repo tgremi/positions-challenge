@@ -1,7 +1,8 @@
 const PriorityQueue = require("./PriorityQueue");
 
-class Graph {
+class Graph extends PriorityQueue {
   constructor() {
+    super();
     this.nodes = [];
     this.adjacencyList = {};
   }
@@ -19,7 +20,6 @@ class Graph {
   findPathWithDijkstra(startNode, endNode) {
     let times = {};
     let backtrace = {};
-    let pq = new PriorityQueue();
 
     times[startNode] = 0;
 
@@ -29,10 +29,10 @@ class Graph {
       }
     });
 
-    pq.enqueue([startNode, 0]);
+    this.enqueue([startNode, 0]);
 
-    while (!pq.isEmpty()) {
-      let shortestStep = pq.dequeue();
+    while (!this.isEmpty()) {
+      let shortestStep = this.dequeue();
       let currentNode = shortestStep[0];
       this.adjacencyList[currentNode].forEach(neighbor => {
         let time = times[currentNode] + neighbor.weight;
@@ -40,7 +40,7 @@ class Graph {
         if (time < times[neighbor.node]) {
           times[neighbor.node] = time;
           backtrace[neighbor.node] = currentNode;
-          pq.enqueue([neighbor.node, time]);
+          this.enqueue([neighbor.node, time]);
         }
       });
     }
